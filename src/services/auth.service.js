@@ -32,6 +32,17 @@ module.exports = {
       });
    },
 
+   // Validar la contraseña ingresada
+   isValidPassword: (user, password) => {
+      return new Promise((resolve, reject) => {
+         try {
+            resolve(bcrypt.compare(password, user.password));
+         } catch (err) {
+            throw new Error(err);
+         }
+      });
+   },
+
    // Verificar el token
    verifyToken: (token) => {
       return new Promise((resolve, reject) => {

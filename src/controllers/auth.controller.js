@@ -74,7 +74,7 @@ module.exports = {
          }
 
          // Espero hasta validar la password
-         const isMatch = await user.isValidPassword(req.body.password);
+         const isMatch = await authService.isValidPassword(user, req.body.password);
 
          if (!isMatch) {
             return res.status(401).json({ msg: 'Nombre de usuario y/o contraseña incorrectos' });
